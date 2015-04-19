@@ -3,6 +3,7 @@
 	"width": 1600,
 	"height": 900,
 	"animation": true,
+	"icon": "brain.webp",
 	"dependencies": [
 		"sources/dat.gui.min.js",
 		"sources/stats.min.js",
