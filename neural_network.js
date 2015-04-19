@@ -9,44 +9,44 @@
 // Copyright (c) 2014
 
 
-function addScript( url, callback ) {
+function addScript( url, elem ,callback ) {
 	var script = document.createElement( 'script' );
 	if( callback ) script.onload = callback;
 	script.type = 'text/javascript';
 	script.src = url;
-	document.body.appendChild( script );
+	elem.appendChild( script );
 }
 
 
-function addCss(url)
+function addCss(url, elem)
 {
 	var css = document.createElement('link');
 	css.rel="stylesheet"
 	css.href=url;
-	document.body.appendChild(css);
+	elem.appendChild(css);
 }
 
 
 
-function addFragment(name, value)
+function addFragment(name, value, elem)
 {
 	var script = document.createElement( 'script' );
 	//if( callback ) script.onload = callback;
 	script.type = 'x-shader/x-fragment';
 	script.id = name;
 	script.innerText = value;
-	document.body.appendChild( script );
+	elem.appendChild( script );
 }
 
 
-function addShader(name, value)
+function addShader(name, value, elem)
 {
 	var script = document.createElement( 'script' );
 	//if( callback ) script.onload = callback;
 	script.type = 'x-shader/x-vertex';
 	script.id = name;
 	script.innerText = value;
-	document.body.appendChild( script );
+	elem.appendChild( script );
 }
 
 
@@ -61,7 +61,7 @@ var neural_network = SAGE2_App.extend( {
 	construct: function() {
 		arguments.callee.superClass.construct.call(this);
 
-		this.resizeEvents = "continuous";
+		this.resizeEvents = "onfinish";
 	},
 
 	init: function(data) {
@@ -69,6 +69,7 @@ var neural_network = SAGE2_App.extend( {
 		// call super-class 'init'
 		arguments.callee.superClass.init.call(this, "div", data);
 		this.element.id = "container";
+		var elem = this.element;
 
 		this.element.appendChild(createElement("div", "canvas-container"));
 		
@@ -84,27 +85,27 @@ var neural_network = SAGE2_App.extend( {
 		void main() { \
 			opacityNew = opacityAttr * opacityMultiplier; \
 			gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0 ); \
-		}");
+		}", elem);
 
 		addFragment("fragmentshader-axon", "\
 		uniform vec3 color;\
 		varying float opacityNew;\
 		void main() {\
 			gl_FragColor = vec4(color, opacityNew);\
-		}");
+		}", elem);
 
 
 
-		addCss(pref_c + "app.css");
+		addCss(pref_c + "app.css", elem);
 
 
 		//addScript(pref_s + "Detector.js");
 		//addScript(pref_s + "dat.gui.min.js");
 		//addScript(pref_s + "stats.min.js");
 		//addScript(pref_s + "three.min.js");
-		addScript(pref_s + "OrbitControls.js");
-		addScript(pref_s + "OBJLoader.js");
-		addScript(pref_s + "three-app.js");
+		addScript(pref_s + "OrbitControls.js", elem);
+		addScript(pref_s + "OBJLoader.js", elem);
+		addScript(pref_s + "three-app.js", elem);
 
 
 	},
@@ -116,7 +117,11 @@ var neural_network = SAGE2_App.extend( {
 	},
 
 	resize: function(date) {
+		var resize = new Event("resize");
+		this.element.dispatchEvent(resize);
+
 		this.refresh(date);
+
 	},
 
 	event: function(eventType, position, user_id, data, date) {

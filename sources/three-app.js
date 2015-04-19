@@ -579,8 +579,14 @@
 
 	// ---------- GUI ----------
 
-		var gui = new dat.GUI();
+		var gui = new dat.GUI({ autoPlace: false });
 		gui.width = 300;
+
+		var cont_element = document.getElementById("container");
+		if(cont_element == null) { console.log("cannot find container. -"  + container); }
+
+		 console.log("Container will be in container: "  + container);
+		cont_element.appendChild(gui.domElement);
 
 		var gui_info = gui.addFolder('Info');
 		gui_info.add(neuralNet, 'numNeurons').name('Neurons');
@@ -656,7 +662,7 @@
 		var w = parseInt(""+ content.style.width);
 		var h = parseInt("" + content.style.height);
 
-		console.log("Container was resized: " + w +" * " + h);
+		console.log("WINDOW was resized: " + w +" * " + h);
 		camera.aspect = w / h;
 		camera.updateProjectionMatrix();
 		renderer.setSize(w, h);

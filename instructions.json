@@ -2,7 +2,7 @@
 	"main_script": "neural_network.js",
 	"width": 1600,
 	"height": 900,
-	"animation": false,
+	"animation": true,
 	"dependencies": [
 		"sources/dat.gui.min.js",
 		"sources/stats.min.js",
