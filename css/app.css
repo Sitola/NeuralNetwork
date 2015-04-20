@@ -5,8 +5,14 @@ canvas {
 	vertical-align: top;
 }
 
-#stats {
+#container
+{
 	position: relative;
+}
+
+#stats {
+	/*position: absolute;*/
+	/*display: none;*/
 	top: 0;
 	left: 0;	
 }
@@ -17,6 +23,7 @@ canvas {
 	bottom: 5px;
 	left: 5px;
 	font-style: italic;
+	display: none;
 }
 
 a, a:visited {
@@ -25,7 +32,8 @@ a, a:visited {
 }
 
 .dg.main{
-	position: relative;
+	position: absolute;
+	float:left;
 	top: 0;
 	left: 0px;
 	z-index: 1;
