@@ -12,7 +12,7 @@ canvas {
 
 #stats {
 	/*position: absolute;*/
-	/*display: none;*/
+	display: none;
 	top: 0;
 	left: 0;	
 }
@@ -37,6 +37,7 @@ a, a:visited {
 	top: 0;
 	left: 0px;
 	z-index: 1;
+	display: none;
 }
 
 

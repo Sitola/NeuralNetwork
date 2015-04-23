@@ -125,6 +125,13 @@ var neural_network = SAGE2_App.extend( {
 	},
 
 	event: function(eventType, position, user_id, data, date) {
+		if (eventType === "pointerPress" && (data.button === "left") ) {
 
+			var x= position.x + this.element.contentDocument.getElementsByTagName("body")[0].scrollLeft;
+			var y= position.y + this.element.contentDocument.getElementsByTagName("body")[0].scrollTop;
+
+			console.log("Position: ", x,y);
+			this.element.contentDocument.elementFromPoint(x,y).click();
+		}
 	}
 });
