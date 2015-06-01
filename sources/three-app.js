@@ -423,7 +423,8 @@
 
 			
 			var n, ii;
-			var currentTime = Date.now();
+			//var currentTime = Date.now();
+            var currentTime = 0;
 
 			// update neurons state and release signal
 			for (ii=0; ii<this.allNeurons.length; ii++) {
