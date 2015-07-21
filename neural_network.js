@@ -58,16 +58,12 @@ function createElement(name, id)
 }
 
 var neural_network = SAGE2_App.extend( {
-	construct: function() {
-		arguments.callee.superClass.construct.call(this);
 
-		this.resizeEvents = "onfinish";
-	},
 
 	init: function(data) {
 
 		// call super-class 'init'
-		arguments.callee.superClass.init.call(this, "div", data);
+		this.SAGE2Init("div", data);
 		this.element.id = "container";
 		var elem = this.element;
 
