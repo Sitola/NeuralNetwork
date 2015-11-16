@@ -70,8 +70,8 @@ var neural_network = SAGE2_App.extend( {
 		this.element.appendChild(createElement("div", "canvas-container"));
 		
 
-		var pref = "uploads/apps/NeuralNetworks/";
-		var pref_s = pref + "sources/";
+		var pref = "user/apps/NeuralNetwork";
+		var pref_s = pref + "/sources/";
 		var pref_c = pref + "css/";
 
 		addShader("vertexshader-axon", " \

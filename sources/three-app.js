@@ -108,7 +108,7 @@
 
 		function ParticlePool(poolSize) {
 
-			this.spriteTextureSignal = THREE.ImageUtils.loadTexture( "uploads/apps/NeuralNetworks/electric.png" );
+			this.spriteTextureSignal = THREE.ImageUtils.loadTexture( "user/apps/NeuralNetwork/electric.png" );
 
 			this.poolSize = poolSize;
 			this.pGeom = new THREE.Geometry();
@@ -299,7 +299,7 @@
 
 			// neuron
 			this.neuronSize = 0.7;
-			this.spriteTextureNeuron = THREE.ImageUtils.loadTexture( "uploads/apps/NeuralNetworks/electric.png" );
+			this.spriteTextureNeuron = THREE.ImageUtils.loadTexture( "user/apps/NeuralNetwork/electric.png" );
 			this.neuronColor = 0x00ffff;
 			this.neuronOpacity = 1.0;
 			this.neuronsGeom = new THREE.Geometry();
@@ -330,7 +330,7 @@
 			var loadedMesh, loadedMeshVertices;
 			var loader = new THREE.OBJLoader();
 
-			loader.load('uploads/apps/NeuralNetworks/brain_vertex_low.obj', function constructNeuralNetwork(loadedObject) {
+			loader.load('user/apps/NeuralNetwork/brain_vertex_low.obj', function constructNeuralNetwork(loadedObject) {
 
 				loadedMesh = loadedObject.children[0];
 				loadedMeshVertices = loadedMesh.geometry.vertices;
