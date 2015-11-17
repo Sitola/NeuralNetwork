@@ -65,14 +65,19 @@ var neural_network = SAGE2_App.extend( {
 		// call super-class 'init'
 		this.SAGE2Init("div", data);
 		this.element.id = "container";
+
+		this.resizeEvents = "continuous"; // "onfinish";
+
+
 		var elem = this.element;
+		_this = this;
 
 		this.element.appendChild(createElement("div", "canvas-container"));
 		
 
 		var pref = "user/apps/NeuralNetwork";
 		var pref_s = pref + "/sources/";
-		var pref_c = pref + "css/";
+		var pref_c = pref + "/css/";
 
 		addShader("vertexshader-axon", " \
 		uniform float opacityMultiplier; \
@@ -95,14 +100,7 @@ var neural_network = SAGE2_App.extend( {
 		addCss(pref_c + "app.css", elem);
 
 
-		//addScript(pref_s + "Detector.js");
-		//addScript(pref_s + "dat.gui.min.js");
-		//addScript(pref_s + "stats.min.js");
-		//addScript(pref_s + "three.min.js");
-		addScript(pref_s + "OrbitControls.js", elem);
-		addScript(pref_s + "OBJLoader.js", elem);
-		addScript(pref_s + "three-app.js", elem);
-
+		this.mainapp = new MasterApp();
 
 	},
 
@@ -113,8 +111,16 @@ var neural_network = SAGE2_App.extend( {
 	},
 
 	resize: function(date) {
-		var resize = new Event("resize");
-		this.element.dispatchEvent(resize);
+		
+		var w = parseInt(""+ this.element.style.width);
+		var h = parseInt("" + this.element.style.height);
+
+		console.log("Resizing: [%d, %d]", w, h );
+
+		if(this.mainapp)
+			_this.mainapp.resize(w, h);
+		else
+			console.log("Error mainapp - not inicialized");
 
 		this.refresh(date);
 

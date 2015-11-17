@@ -4,11 +4,15 @@
 	"height": 900,
 	"animation": true,
 	"icon": "brain.webp",
+	"resize": "free",
 	"dependencies": [
 		"sources/dat.gui.min.js",
 		"sources/stats.min.js",
 		"sources/three.min.js",
-		"sources/Detector.js"
+		"sources/Detector.js",
+		"sources/OrbitControls.js",
+		"sources/OBJLoader.js",
+		"sources/three-app.js"
 	],
 	"title": "Neural Network",
 	"version": "1.0.0",
